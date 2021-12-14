@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:cxf="http://camel.apache.org/schema/cxf"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd "
+        default-lazy-init="false">
+
+
+   <camelContext id="camelApiService" xmlns="http://camel.apache.org/schema/spring">
+      <route>
+         <from uri="direct:getCurrentWeather"/>
+         <to uri="mock:dummy"/>
+      </route>
+   </camelContext>
+
+   <context:annotation-config/>
+   <bean id="ApiServiceImpl" class="example.webservices.impl.ApiServiceImpl"/>
+
+</beans>
